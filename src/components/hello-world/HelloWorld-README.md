@@ -11,9 +11,9 @@ See the `result.png` picture to see what the final result should look like.
 - **TODO 1:** Create a new file called `helloWorld.css`. The new file must be created under the `hello-world` folder. \
   **hint:** Take a look at the demo you completed a few weeks ago about how to add classes in CSS, and how to link them in HTML -> https://gitlab.com/alejandrochacinortega/spk-frontend-workshop/-/tree/2-css-demo-end
 
-- **TODO 1.1:** Create a class called `white-color`.
+- **TODO 1.1:** Create a class called `header-color`.
 
-- **TODO 1.2:** In the class you just created, add the `color` property and set it to `white`.
+- **TODO 1.2:** In the class you just created, add the `color` property and set it to `black` or `#fff`.
 
 - **TODO 2:** Import the CSS file you just created in the `HelloWorld.tsx` file.\
   **hint:** See how this is done in the `Welcome.tsx` file.
