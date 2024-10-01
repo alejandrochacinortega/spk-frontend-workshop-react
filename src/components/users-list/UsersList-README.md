@@ -1,27 +1,28 @@
-# WELCOME TO DEMO #4: Filter a list of users
+# WELCOME TO DEMO #5: Show several lists of users
 
-## 🤓️ Your task is to filter a list of users in the UI.
+## 🤓️ Your task is to show a list of users in the UI.
 
 ### 📢️ IMPORTANT: Read all the following lines before you start coding.
 
 ### ⛔️ DO NOT write your code in this file. This is just a read me file.
 
-See the `result.gif` picture to see what the final result should look like.
+See the `result.png` picture to see what the final result should look like.
 
-- **TODO 1:** Get familiar with the `useState` hook from React. Read more https://reactjs.org/docs/hooks-state.html \
+- **TODO 1:** Fix the function `renderAllUsers` in the `UsersList.tsx` component. Instead of returning `I should return all users :(`, do something so that the function returns all the names of the `users` \
+   **hint:** You just did this in demo 3 😉️
 
-- **TODO 2:** Now that you know what the `useState` hook does, create a variable called `searchValue`, with its equivalent setter `setSearchValue`. \
-  **hint 1**: Import `useState` from `react`
-  **hint 2**: `const [searchValue, setSearchValue] = useState('');`
+- **TODO 2:** In the same `UsersList.tsx` component, create a function that returns ONLY the name of those people with brown eyes. Call that function inside what the component is returning that you can see it in the UI \
+  **hint:** You can use the filter function you learn last week 😉️ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 
-- **TODO 3:** Create an `input` in the `UsersList.tsx` component. The input must use the value of the variables you just created in step 1. Make sure your input works before you go to the next step \
-  **hint:** Take a look at this for more info https://stackoverflow.com/questions/55757761/handle-an-input-with-react-hooks
+- **TODO 3:** In the same `UsersList.tsx` component, create a function that returns ONLY the name of those people older than 39. Call that function inside what the component is returning that you can see it in the UI \
+  **hint:** You can use the filter function you learn last week 😉️ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 
-- **TODO 4:** Make use of the value of your `input` (`searchValue`), to filter the list of users you are showing \
-  **hint:** You have to modify the `renderAllUsers` function.
+- **TODO 4:** In the same `UsersList.tsx` component, create a function that return ONLY name that includes the vowel "a" of those people younger than 30. Call that function inside what the component is returning so that you can see it in the UI. \
+  **hint:** You can use the filter function you learn last week 😉️ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 
-- **TODO 5:** Modify the `renderAllUsers` functions so that it does not only show the filtered users, but also the total match (amount of users found) \
-  **hint:** Functions and component must ALWAYS return a block. In this case, you may want to wrap the return of `renderAllUsers` inside a `div` element.
+- **TODO 5:** In the same `UsersList.tsx` component, create a function that returns how many people have "strawberry" as their favorite fruit. Show also who are the people who have `apple` as their favorite fruit. Call that function inside what the component is returning so that you can see it in the UI. \
+
+- **TODO 6:** In the same `UsersList.tsx` component, create a function that returns the only person with `_id` `6166e7ec8aecd93c56ebd0ec`. Call that function inside what the component is returning so that you can see it in the UI. \
 
 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
