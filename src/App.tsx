@@ -1,12 +1,14 @@
 import React from 'react';
 import Welcome from './components/welcome/Welcome';
-import { HelloWorld } from './components/hello-world/HelloWorld';
+import UsersList from './components/users-list/UsersList';
+import users from './api/data';
 
 const App: React.FC = () => {
   return (
     <div>
       <Welcome />
-      <HelloWorld />
+      <h2>Demo 3</h2>
+      <UsersList users={users} />
     </div>
   );
 };
