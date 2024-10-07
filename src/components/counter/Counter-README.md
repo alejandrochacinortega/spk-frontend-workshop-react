@@ -8,7 +8,7 @@
 
 See the `result.gif` picture to see what the final result should look like.
 
-- **TODO 1:** Add a reset button and reset the value to 0
+- **TODO 1:** Add a reset button and reset the value to 0.
 
 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
