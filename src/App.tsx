@@ -1,13 +1,14 @@
 import React from 'react';
 import Welcome from './components/welcome/Welcome';
 
-import Counter from './components/counter/Counter';
+
+import TodoList from './components/todoList/TodoList';
 
 const App: React.FC = () => {
   return (
     <div>
-      <Welcome demo="4.3 - Increment by 5." />
-      <Counter />
+      <Welcome demo="4.5 - Create Todo List" />
+      <TodoList/>
     </div>
   );
 };
