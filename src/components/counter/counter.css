@@ -27,9 +27,6 @@ button {
   transition: background-color 0.3s;
 }
 
-.disabled {
-  background-color: gray;
-}
 
 button:hover {
   background-color: #0056b3;

@@ -1,6 +1,6 @@
-# WELCOME TO DEMO #4.3: Increment by 5.
+# WELCOME TO DEMO #4.3: Increment by 5 and disable reset when value is 0.
 
-## 🤓️ Your task is to create two new buttons that increment the value by 5.
+## 🤓️ Your task is to create two new buttons that increment the value by 5 and disable reset button when value is 0.
 
 ### 📢️ IMPORTANT: Read all the following lines before you start coding.
 
