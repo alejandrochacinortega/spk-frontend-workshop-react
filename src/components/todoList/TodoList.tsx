@@ -7,27 +7,30 @@ type Todo = {
 };
 
 const TodoList: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [newTodo, setNewTodo] = useState<string>('');
+  // TODO 1: Use the useState hook to create a new variable (todos and setTodos). It must be an array of Todo. Set the initial value to an empty array.
+  // TODO 2: Use the useState hook to create a new variable (newTodo and setNewTodo). It must be a string. Set the initial value to an empty "".
+
+  // TODO 3: Uncomment the code form line 31 to 51
+
+  // TODO 5: Finish the demo
+
 
   const addTodo = () => {
-    if (newTodo.trim()) {
-      setTodos([...todos, { id: Date.now(), text: newTodo }]);
-      setNewTodo('');
-    }
+    alert("Create todo logic")
   };
 
   const deleteTodo = (id: number) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    console.log("item to delete ", id)
+    alert("Create delete logic")
   };
 
   return (
     <div className="todo-container">
-      <div className="todo-input-container">
+      {/* <div className="todo-input-container">
         <input
           className="todo-input"
           value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
+          onChange={(e) => alert("Add set new todo logic")}
           placeholder="What are your tasks?"
         />
         <button className="todo-button" onClick={addTodo}>
@@ -43,7 +46,7 @@ const TodoList: React.FC = () => {
             </button>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };
