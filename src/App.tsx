@@ -6,7 +6,7 @@ import Counter from './components/counter/Counter';
 const App: React.FC = () => {
   return (
     <div>
-      <Welcome demo="4.1 - Simple Counter" />
+      <Welcome demo="4.2 - Simple Counter with Reset" />
       <Counter />
     </div>
   );
