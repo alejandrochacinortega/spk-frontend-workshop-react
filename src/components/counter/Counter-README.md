@@ -1,6 +1,4 @@
-# WELCOME TO DEMO #4.2: Filter a list of users
-
-## 🤓️ Your task is to filter a list of users in the UI.
+# WELCOME TO DEMO #4.2: Counter with reset
 
 ### 📢️ IMPORTANT: Read all the following lines before you start coding.
 
