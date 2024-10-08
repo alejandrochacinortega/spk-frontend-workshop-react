@@ -1,4 +1,4 @@
-# WELCOME TO DEMO #4.1: Filter a list of users
+# WELCOME TO DEMO #4.1: Counter Component
 
 ## 🤓️ Your task is to create counter component.
 
