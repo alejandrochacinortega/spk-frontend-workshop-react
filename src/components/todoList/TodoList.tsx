@@ -11,28 +11,15 @@ const TodoList: React.FC = () => {
   const [newTodo, setNewTodo] = useState<string>('');
 
   const addTodo = () => {
-    if (newTodo.trim()) {
-      setTodos([...todos, { id: Date.now(), text: newTodo }]);
-      setNewTodo('');
-    }
+    alert('Add Todo: ' + newTodo);
   };
 
   const deleteTodo = (id: number) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    alert('Delete Todo: ' + id);
   };
 
   const onEditTodo = (id: number) => {
-    const editedTodo = todos.find((todo) => todo.id === id);
-
-    if (!editedTodo) return;
-    const newTodo = prompt('Enter new todo', editedTodo.text);
-    if (newTodo) {
-      setTodos(
-        todos.map((todo) =>
-          todo.id === id ? { ...todo, text: newTodo } : todo,
-        ),
-      );
-    }
+    alert('Edit Todo: ' + id);
   };
 
   return (
@@ -42,7 +29,7 @@ const TodoList: React.FC = () => {
           className="todo-input"
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="What are your tasks?"
+          placeholder="Add a new todo..."
         />
         <button className="todo-button" onClick={addTodo}>
           Add
@@ -53,7 +40,7 @@ const TodoList: React.FC = () => {
           <li key={todo.id} className="todo-item">
             <span>{todo.text}</span>
             <div>
-            <button
+              <button
                 className="delete-button"
                 onClick={() => onEditTodo(todo.id)}
               >
@@ -65,7 +52,6 @@ const TodoList: React.FC = () => {
               >
                 <span>Delete</span>
               </button>
-
             </div>
           </li>
         ))}
