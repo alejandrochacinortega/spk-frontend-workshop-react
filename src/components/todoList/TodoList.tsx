@@ -4,6 +4,7 @@ import './todoList.css';
 type Todo = {
   id: number;
   text: string;
+  completed: boolean;
 };
 
 const TodoList: React.FC = () => {
@@ -12,7 +13,7 @@ const TodoList: React.FC = () => {
 
   const addTodo = () => {
     if (newTodo.trim()) {
-      setTodos([...todos, { id: Date.now(), text: newTodo }]);
+      setTodos([...todos, { id: Date.now(), text: newTodo, completed: false }]);
       setNewTodo('');
     }
   };
@@ -35,6 +36,74 @@ const TodoList: React.FC = () => {
     }
   };
 
+  const onCompletedTodo = (id: number) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
+    );
+  };
+
+  const renderUncompletedTodos = () => {
+    return todos
+      .filter((todo) => todo.completed === false)
+      .map((todo) => (
+        <li key={todo.id} className="todo-item">
+          <span>{todo.text}</span>
+          <div>
+            <button
+              className="delete-button"
+              onClick={() => onCompletedTodo(todo.id)}
+            >
+              <span>Completed</span>
+            </button>
+            <button
+              className="delete-button"
+              onClick={() => onEditTodo(todo.id)}
+            >
+              <span>Edit</span>
+            </button>
+            <button
+              className="delete-button"
+              onClick={() => deleteTodo(todo.id)}
+            >
+              <span>Delete</span>
+            </button>
+          </div>
+        </li>
+      ));
+  };
+
+  const renderCompletedTodos = () => {
+    return todos
+      .filter((todo) => todo.completed === true)
+      .map((todo) => (
+        <li key={todo.id} className="todo-item">
+          <span>{todo.text}</span>
+          <div>
+            <button
+              className="delete-button"
+              onClick={() => onCompletedTodo(todo.id)}
+            >
+              <span>Undo</span>
+            </button>
+            <button
+              className="delete-button"
+              onClick={() => onEditTodo(todo.id)}
+            >
+              <span>Edit</span>
+            </button>
+            <button
+              className="delete-button"
+              onClick={() => deleteTodo(todo.id)}
+            >
+              <span>Delete</span>
+            </button>
+          </div>
+        </li>
+      ));
+  };
+
   return (
     <div className="todo-container">
       <div className="todo-input-container">
@@ -48,28 +117,10 @@ const TodoList: React.FC = () => {
           Add
         </button>
       </div>
-      <ul className="todo-list">
-        {todos.map((todo) => (
-          <li key={todo.id} className="todo-item">
-            <span>{todo.text}</span>
-            <div>
-            <button
-                className="delete-button"
-                onClick={() => onEditTodo(todo.id)}
-              >
-                <span>Edit</span>
-              </button>
-              <button
-                className="delete-button"
-                onClick={() => deleteTodo(todo.id)}
-              >
-                <span>Delete</span>
-              </button>
+      <ul className="todo-list">{renderUncompletedTodos()}</ul>
 
-            </div>
-          </li>
-        ))}
-      </ul>
+      <h3>Completed tasks</h3>
+      <ul className="todo-list">{renderCompletedTodos()}</ul>
     </div>
   );
 };
