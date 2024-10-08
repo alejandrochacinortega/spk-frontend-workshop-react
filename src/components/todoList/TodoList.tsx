@@ -21,6 +21,20 @@ const TodoList: React.FC = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const onEditTodo = (id: number) => {
+    const editedTodo = todos.find((todo) => todo.id === id);
+
+    if (!editedTodo) return;
+    const newTodo = prompt('Enter new todo', editedTodo.text);
+    if (newTodo) {
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, text: newTodo } : todo,
+        ),
+      );
+    }
+  };
+
   return (
     <div className="todo-container">
       <div className="todo-input-container">
@@ -38,9 +52,21 @@ const TodoList: React.FC = () => {
         {todos.map((todo) => (
           <li key={todo.id} className="todo-item">
             <span>{todo.text}</span>
-            <button className="delete-button" onClick={() => deleteTodo(todo.id)}>
-              <span role="img" aria-label="delete">🗑️</span>
-            </button>
+            <div>
+            <button
+                className="delete-button"
+                onClick={() => onEditTodo(todo.id)}
+              >
+                <span>Edit</span>
+              </button>
+              <button
+                className="delete-button"
+                onClick={() => deleteTodo(todo.id)}
+              >
+                <span>Delete</span>
+              </button>
+
+            </div>
           </li>
         ))}
       </ul>

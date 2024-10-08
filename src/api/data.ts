@@ -328,7 +328,15 @@ const users: IUser[] = [
     email: 'dixonstout@orboid.com',
     phone: '+1 (942) 594-3827',
     address: '732 Kay Court, Titanic, Marshall Islands, 4022',
-    tags: ['laborum', 'exercitation', 'eiusmod', 'ad', 'in', 'laborum', 'ullamco'],
+    tags: [
+      'laborum',
+      'exercitation',
+      'eiusmod',
+      'ad',
+      'in',
+      'laborum',
+      'ullamco',
+    ],
     friends: [
       {
         id: 0,
@@ -496,7 +504,15 @@ const users: IUser[] = [
     email: 'marjoriemckinney@acusage.com',
     phone: '+1 (977) 448-2931',
     address: '730 Hicks Street, Hebron, Minnesota, 4306',
-    tags: ['exercitation', 'duis', 'anim', 'exercitation', 'velit', 'in', 'est'],
+    tags: [
+      'exercitation',
+      'duis',
+      'anim',
+      'exercitation',
+      'velit',
+      'in',
+      'est',
+    ],
     friends: [
       {
         id: 0,
