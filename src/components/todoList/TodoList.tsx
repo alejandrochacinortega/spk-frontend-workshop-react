@@ -37,11 +37,7 @@ const TodoList: React.FC = () => {
   };
 
   const onCompletedTodo = (id: number) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
-      ),
-    );
+    alert('TODO Completed' + id);
   };
 
   const renderUncompletedTodos = () => {
@@ -74,36 +70,6 @@ const TodoList: React.FC = () => {
       ));
   };
 
-  const renderCompletedTodos = () => {
-    return todos
-      .filter((todo) => todo.completed === true)
-      .map((todo) => (
-        <li key={todo.id} className="todo-item">
-          <span>{todo.text}</span>
-          <div>
-            <button
-              className="delete-button"
-              onClick={() => onCompletedTodo(todo.id)}
-            >
-              <span>Undo</span>
-            </button>
-            <button
-              className="delete-button"
-              onClick={() => onEditTodo(todo.id)}
-            >
-              <span>Edit</span>
-            </button>
-            <button
-              className="delete-button"
-              onClick={() => deleteTodo(todo.id)}
-            >
-              <span>Delete</span>
-            </button>
-          </div>
-        </li>
-      ));
-  };
-
   return (
     <div className="todo-container">
       <div className="todo-input-container">
@@ -118,9 +84,6 @@ const TodoList: React.FC = () => {
         </button>
       </div>
       <ul className="todo-list">{renderUncompletedTodos()}</ul>
-
-      <h3>Completed tasks</h3>
-      <ul className="todo-list">{renderCompletedTodos()}</ul>
     </div>
   );
 };
