@@ -14,7 +14,7 @@ See the `result.png` picture to see what the final result should look like.
 
 Currently, you render the `UsersList` component from `App.tsx` like this:
 
-<UsersList users={users} eyeColor="brown" title="People with brown eyes" />
+<UsersList users={users} />
 
 This is a very general component (and it is ok), but we want to improve it. We want to add more props to the `UsersList` component so that the component can do filtering for us.
 
