@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './todoList.css';
+import { addTodo, deleteTodo, editTodo } from '../../utils/utils';
 
-type Todo = {
+export type Todo = {
   id: number;
-  text: string;
+  title: string;
   completed: boolean;
 };
 
@@ -11,37 +12,84 @@ const TodoList: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodo, setNewTodo] = useState<string>('');
 
-  const addTodo = () => {
-    if (newTodo.trim()) {
-      setTodos([...todos, { id: Date.now(), text: newTodo, completed: false }]);
-      setNewTodo('');
+  // Use useEffect to fetch initial todos from JSONPlaceholder
+  useEffect(() => {
+    const fetchTodos = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/todos');
+        const data: Todo[] = await response.json();
+        console.log('data ', data);
+        const initialTodos = data.map((item) => ({
+          id: item.id,
+          title: item.title,
+          completed: item.completed,
+        }));
+        setTodos(initialTodos);
+      } catch (error) {
+        console.error('Error fetching todos:', error);
+      }
+    };
+
+    fetchTodos();
+  }, []); // Empty dependency array means this effect runs once on mount
+
+  /*************  ✨ Codeium Command ⭐  *************/
+  /**
+   * Adds a new todo item to the list. If the text is not empty,
+   * it calls the addTodo function, adds the new item to the list,
+   * and resets the input field.
+   */
+  /******  24a1e67a-af5d-40e8-92a0-a9d9d0113efd  *******/
+  const handleAddTodo = async () => {
+    try {
+      if (newTodo.trim()) {
+        const response = await addTodo(newTodo);
+
+        if (response.ok) {
+          const todo = response.todo;
+          setTodos([...todos, todo]);
+          setNewTodo('');
+        }
+      }
+    } catch (error) {
+      console.log('error ', error);
     }
   };
 
-  const deleteTodo = (id: number) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  const handleDelete = async (id: number) => {
+    try {
+      const response = await deleteTodo(id);
+
+      if (response.ok) {
+        setTodos(todos.filter((todo) => todo.id !== id));
+      }
+    } catch (error) {
+      console.log('error ', error);
+    }
   };
 
-  const onEditTodo = (id: number) => {
+  const handleEdit = async (id: number) => {
     const editedTodo = todos.find((todo) => todo.id === id);
 
     if (!editedTodo) return;
-    const newTodo = prompt('Enter new todo', editedTodo.text);
+    const newTodo = prompt('Enter new todo', editedTodo.title);
     if (newTodo) {
-      setTodos(
-        todos.map((todo) =>
-          todo.id === id ? { ...todo, text: newTodo } : todo,
-        ),
-      );
+      const edited = await editTodo(id, newTodo, editedTodo.completed);
+
+      if (!edited.ok) return;
+      setTodos(todos.map((todo) => (todo.id === id ? edited.todo : todo)));
     }
   };
 
-  const onCompletedTodo = (id: number) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
-      ),
-    );
+  const handleCompletedTodo = async (id: number) => {
+    const todo = todos.find((todo) => todo.id === id);
+    if (!todo) return;
+    const editedTodo = await editTodo(id, todo.title, !todo.completed);
+    console.log('editedTodo ', editedTodo);
+
+    if (!editedTodo.ok) return;
+    console.log('editedTodo ', editedTodo);
+    setTodos(todos.map((todo) => (todo.id === id ? editedTodo.todo : todo)));
   };
 
   const renderUncompletedTodos = () => {
@@ -49,23 +97,23 @@ const TodoList: React.FC = () => {
       .filter((todo) => todo.completed === false)
       .map((todo) => (
         <li key={todo.id} className="todo-item">
-          <span>{todo.text}</span>
+          <span>{todo.title}</span>
           <div>
             <button
               className="delete-button"
-              onClick={() => onCompletedTodo(todo.id)}
+              onClick={() => handleCompletedTodo(todo.id)}
             >
               <span>Completed</span>
             </button>
             <button
               className="delete-button"
-              onClick={() => onEditTodo(todo.id)}
+              onClick={() => handleEdit(todo.id)}
             >
               <span>Edit</span>
             </button>
             <button
               className="delete-button"
-              onClick={() => deleteTodo(todo.id)}
+              onClick={() => handleDelete(todo.id)}
             >
               <span>Delete</span>
             </button>
@@ -79,17 +127,17 @@ const TodoList: React.FC = () => {
       .filter((todo) => todo.completed === true)
       .map((todo) => (
         <li key={todo.id} className="todo-item">
-          <span>{todo.text}</span>
+          <span>{todo.title}</span>
           <div>
             <button
               className="delete-button"
-              onClick={() => onCompletedTodo(todo.id)}
+              onClick={() => handleCompletedTodo(todo.id)}
             >
               <span>Undo</span>
             </button>
             <button
               className="delete-button"
-              onClick={() => onEditTodo(todo.id)}
+              onClick={() => handleEdit(todo.id)}
             >
               <span>Edit</span>
             </button>
@@ -113,7 +161,7 @@ const TodoList: React.FC = () => {
           onChange={(e) => setNewTodo(e.target.value)}
           placeholder="What are your tasks?"
         />
-        <button className="todo-button" onClick={addTodo}>
+        <button className="todo-button" onClick={handleAddTodo}>
           Add
         </button>
       </div>
