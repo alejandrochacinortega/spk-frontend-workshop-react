@@ -117,7 +117,7 @@ const TodoList: React.FC = () => {
             </button>
             <button
               className="delete-button"
-              onClick={() => deleteTodo(todo.id)}
+              onClick={() => handleDelete(todo.id)}
             >
               <span>Delete</span>
             </button>
