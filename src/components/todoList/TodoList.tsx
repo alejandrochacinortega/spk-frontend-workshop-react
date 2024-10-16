@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './todoList.css';
 import { addTodo, deleteTodo, editTodo } from '../../api/todo';
 import { delay } from '../../utils/utils';
-import Loading from '../loading/Loading';
 
 export type Todo = {
   id: number;
@@ -13,7 +12,6 @@ export type Todo = {
 const TodoList: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodo, setNewTodo] = useState<string>('');
-  const [loading, setLoading] = useState(true);
 
   // Use useEffect to fetch initial todos from JSONPlaceholder
   useEffect(() => {
@@ -29,10 +27,8 @@ const TodoList: React.FC = () => {
           completed: item.completed,
         }));
         setTodos(initialTodos);
-        setLoading(false);
       } catch (error) {
         console.error('Error fetching todos:', error);
-        setLoading(false);
       }
     };
 
@@ -168,18 +164,12 @@ const TodoList: React.FC = () => {
           Add
         </button>
       </div>
-      {loading ? (
-        <Loading text="Loading uncompleted todos..." />
-      ) : (
-        <ul className="todo-list">{renderUncompletedTodos()}</ul>
-      )}
+
+      <ul className="todo-list">{renderUncompletedTodos()}</ul>
 
       {todos.length > 0 && <h3>Completed tasks</h3>}
-      {loading ? (
-        <Loading text="Loading completed todos..." />
-      ) : (
-        <ul className="todo-list">{renderCompletedTodos()}</ul>
-      )}
+
+      <ul className="todo-list">{renderCompletedTodos()}</ul>
     </div>
   );
 };
