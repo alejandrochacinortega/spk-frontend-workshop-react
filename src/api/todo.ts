@@ -20,6 +20,17 @@ export const getTodos = async (): Promise<{
   }
 };
 
+/**
+ * Fetches a single todo from the server.
+ *
+ * @param id - The id of the todo to fetch.
+ * @returns A promise that resolves to an object with the following properties:
+ * - ok: A boolean that is true if the request was successful and false otherwise.
+ * - todo: The fetched todo if the request was successful, otherwise an empty object.
+ * - error?: An optional string that is only present if the request failed.
+ *   The string contains an error message.
+ */
+
 export const getTodo = async (
   id: number,
 ): Promise<{ ok: boolean; todo: Todo; error?: string }> => {
@@ -37,6 +48,18 @@ export const getTodo = async (
     };
   }
 };
+
+/**
+ * Deletes a todo from the server.
+ *
+ * @param id - The id of the todo to delete.
+ * @returns A promise that resolves to an object with the following properties:
+ * - ok: A boolean that is true if the request was successful and false otherwise.
+ * - id: The id of the deleted todo if the request was successful, otherwise the
+ *   value of `id`.
+ * - error?: An optional string that is only present if the request failed.
+ *   The string contains an error message.
+ */
 
 export const deleteTodo = async (
   id: number,
@@ -59,6 +82,16 @@ export const deleteTodo = async (
   }
 };
 
+/**
+ * Adds a new todo to the server.
+ *
+ * @param title - The title of the new todo.
+ * @returns A promise that resolves to an object with the following properties:
+ * - ok: A boolean that is true if the request was successful and false otherwise.
+ * - todo: The newly created todo if the request was successful, otherwise an empty object.
+ * - error?: An optional string that is only present if the request failed.
+ *   The string contains an error message.
+ */
 export const addTodo = async (
   title: string,
 ): Promise<{ ok: boolean; todo: Todo; error?: string }> => {
@@ -91,6 +124,18 @@ export const addTodo = async (
   }
 };
 
+/**
+ * Edits an existing todo item in the server.
+ *
+ * @param id - The id of the todo to edit.
+ * @param title - The new title of the todo.
+ * @param completed - An optional boolean that indicates if the todo is completed.
+ * @returns A promise that resolves to an object with the following properties:
+ * - ok: A boolean that is true if the request was successful and false otherwise.
+ * - todo: The edited todo if the request was successful, otherwise an empty object.
+ * - error?: An optional string that is only present if the request failed.
+ *   The string contains an error message.
+ */
 export const editTodo = async (
   id: number,
   title: string,

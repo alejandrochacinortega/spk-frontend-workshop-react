@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './todoList.css';
-import { addTodo, deleteTodo, editTodo } from '../../utils/utils';
+import { addTodo, deleteTodo } from '../../api/todo';
 
 export type Todo = {
   id: number;
@@ -12,7 +12,7 @@ const TodoList: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodo, setNewTodo] = useState<string>('');
 
-  // Use useEffect to fetch initial todos from JSONPlaceholder
+  // Use useEffect to fetch initial todos from db.json
   useEffect(() => {
     const fetchTodos = async () => {
       try {
@@ -33,13 +33,11 @@ const TodoList: React.FC = () => {
     fetchTodos();
   }, []); // Empty dependency array means this effect runs once on mount
 
-  /*************  ✨ Codeium Command ⭐  *************/
   /**
    * Adds a new todo item to the list. If the text is not empty,
    * it calls the addTodo function, adds the new item to the list,
    * and resets the input field.
    */
-  /******  24a1e67a-af5d-40e8-92a0-a9d9d0113efd  *******/
   const handleAddTodo = async () => {
     try {
       if (newTodo.trim()) {
@@ -57,39 +55,15 @@ const TodoList: React.FC = () => {
   };
 
   const handleDelete = async (id: number) => {
-    try {
-      const response = await deleteTodo(id);
-
-      if (response.ok) {
-        setTodos(todos.filter((todo) => todo.id !== id));
-      }
-    } catch (error) {
-      console.log('error ', error);
-    }
+    alert(`TODO: handleDelete ${id}`);
   };
 
   const handleEdit = async (id: number) => {
-    const editedTodo = todos.find((todo) => todo.id === id);
-
-    if (!editedTodo) return;
-    const newTodo = prompt('Enter new todo', editedTodo.title);
-    if (newTodo) {
-      const edited = await editTodo(id, newTodo, editedTodo.completed);
-
-      if (!edited.ok) return;
-      setTodos(todos.map((todo) => (todo.id === id ? edited.todo : todo)));
-    }
+    alert(`TODO: handleEdit ${id}`);
   };
 
   const handleCompletedTodo = async (id: number) => {
-    const todo = todos.find((todo) => todo.id === id);
-    if (!todo) return;
-    const editedTodo = await editTodo(id, todo.title, !todo.completed);
-    console.log('editedTodo ', editedTodo);
-
-    if (!editedTodo.ok) return;
-    console.log('editedTodo ', editedTodo);
-    setTodos(todos.map((todo) => (todo.id === id ? editedTodo.todo : todo)));
+    alert(`TODO: handleCompletedTodo ${id}`);
   };
 
   const renderUncompletedTodos = () => {
