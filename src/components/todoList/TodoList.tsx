@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './todoList.css';
 import { addTodo, deleteTodo, editTodo } from '../../api/todo';
+import { delay } from '../../utils/utils';
+import Loading from '../loading/Loading';
 
 export type Todo = {
   id: number;
@@ -11,11 +13,13 @@ export type Todo = {
 const TodoList: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodo, setNewTodo] = useState<string>('');
+  const [loading, setLoading] = useState(true);
 
   // Use useEffect to fetch initial todos from JSONPlaceholder
   useEffect(() => {
     const fetchTodos = async () => {
       try {
+        await delay();
         const response = await fetch('http://localhost:3000/todos');
         const data: Todo[] = await response.json();
         console.log('data ', data);
@@ -25,21 +29,16 @@ const TodoList: React.FC = () => {
           completed: item.completed,
         }));
         setTodos(initialTodos);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching todos:', error);
+        setLoading(false);
       }
     };
 
     fetchTodos();
   }, []); // Empty dependency array means this effect runs once on mount
 
-  /*************  ✨ Codeium Command ⭐  *************/
-  /**
-   * Adds a new todo item to the list. If the text is not empty,
-   * it calls the addTodo function, adds the new item to the list,
-   * and resets the input field.
-   */
-  /******  24a1e67a-af5d-40e8-92a0-a9d9d0113efd  *******/
   const handleAddTodo = async () => {
     try {
       if (newTodo.trim()) {
@@ -93,6 +92,10 @@ const TodoList: React.FC = () => {
   };
 
   const renderUncompletedTodos = () => {
+    if (todos.length === 0) {
+      return <h2>No todos</h2>;
+    }
+
     return todos
       .filter((todo) => todo.completed === false)
       .map((todo) => (
@@ -165,10 +168,18 @@ const TodoList: React.FC = () => {
           Add
         </button>
       </div>
-      <ul className="todo-list">{renderUncompletedTodos()}</ul>
+      {loading ? (
+        <Loading text="Loading uncompleted todos..." />
+      ) : (
+        <ul className="todo-list">{renderUncompletedTodos()}</ul>
+      )}
 
       {todos.length > 0 && <h3>Completed tasks</h3>}
-      <ul className="todo-list">{renderCompletedTodos()}</ul>
+      {loading ? (
+        <Loading text="Loading completed todos..." />
+      ) : (
+        <ul className="todo-list">{renderCompletedTodos()}</ul>
+      )}
     </div>
   );
 };

@@ -6,16 +6,5 @@
     "email": "ENTER YOUR EMAIL",
     "phone": "ENTER YOUR PHONE NUMBER"
   },
-  "todos": [
-    {
-      "title": "Go for a run ",
-      "completed": false,
-      "id": "1729060897236"
-    },
-    {
-      "title": "Stand-up meeting",
-      "completed": true,
-      "id": "1729060908279"
-    }
-  ]
+  "todos": []
 }
