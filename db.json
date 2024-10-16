@@ -6,41 +6,5 @@
     "email": "ENTER YOUR EMAIL",
     "phone": "ENTER YOUR PHONE NUMBER"
   },
-  "todos": [
-    {
-      "title": "Trash",
-      "completed": false,
-      "id": "1728907325392"
-    },
-    {
-      "title": "Go to bed111",
-      "completed": false,
-      "id": "1728907350052"
-    },
-    {
-      "title": "Drink coffee1222",
-      "completed": false,
-      "id": "1729058295067"
-    },
-    {
-      "title": "Hello",
-      "completed": false,
-      "id": "1729058330328"
-    },
-    {
-      "title": "Dishes",
-      "completed": true,
-      "id": "1729058360702"
-    },
-    {
-      "id": "1729058413579",
-      "title": "hey",
-      "completed": false
-    },
-    {
-      "title": "3333",
-      "completed": true,
-      "id": "1729058566139"
-    }
-  ]
+  "todos": []
 }
