@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './todoList.css';
-import { addTodo, deleteTodo, editTodo } from '../../utils/utils';
+import { addTodo, deleteTodo, editTodo } from '../../api/todo';
 
 export type Todo = {
   id: number;

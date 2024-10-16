@@ -9,7 +9,7 @@
   "todos": [
     {
       "title": "Trash",
-      "completed": false,
+      "completed": true,
       "id": "1728907325392"
     },
     {
@@ -19,7 +19,7 @@
     },
     {
       "title": "Drink coffee1222",
-      "completed": false,
+      "completed": true,
       "id": "1729058295067"
     },
     {
