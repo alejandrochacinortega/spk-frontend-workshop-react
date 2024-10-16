@@ -1,10 +1,10 @@
 {
   "profile": {
-    "firstName": "ENTER YOUR NAME",
-    "lastName": "ENTER YOUR NAME",
-    "age": "ENTER YOUR AGE",
-    "email": "ENTER YOUR EMAIL",
-    "phone": "ENTER YOUR PHONE NUMBER"
+    "firstName": "Alejandro",
+    "lastName": "Ortega",
+    "age": 34,
+    "email": "alejandro.chacin.ortega@spk.no",
+    "phone": "+47 123 45 678"
   },
   "todos": []
 }
