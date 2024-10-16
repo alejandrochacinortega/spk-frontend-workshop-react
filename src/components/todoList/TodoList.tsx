@@ -143,7 +143,7 @@ const TodoList: React.FC = () => {
             </button>
             <button
               className="delete-button"
-              onClick={() => deleteTodo(todo.id)}
+              onClick={() => handleDelete(todo.id)}
             >
               <span>Delete</span>
             </button>
@@ -167,7 +167,7 @@ const TodoList: React.FC = () => {
       </div>
       <ul className="todo-list">{renderUncompletedTodos()}</ul>
 
-      <h3>Completed tasks</h3>
+      {todos.length > 0 && <h3>Completed tasks</h3>}
       <ul className="todo-list">{renderCompletedTodos()}</ul>
     </div>
   );
