@@ -1,19 +1,20 @@
-import { Todo } from '../components/todoList/TodoList';
+import { delay } from '../utils/utils';
 
-type Profile = {
+export interface IProfile {
   firstName: string;
   lastName: string;
   age: number;
   email: string;
   phone: string;
-};
+}
 
 export const getProfile = async (): Promise<{
   ok: boolean;
-  profile: Profile;
+  profile: IProfile | null;
   error?: string;
 }> => {
   try {
+    await delay();
     const profile = await fetch(`http://localhost:3000/profile`)
       .then((response) => response.json())
       .then((json) => json);
@@ -22,7 +23,7 @@ export const getProfile = async (): Promise<{
     console.error('Error fetching todos:', error);
     return {
       ok: false,
-      profile: {} as Profile,
+      profile: null,
       error: "Opps. We couldn't find todo. Please try again.",
     };
   }
