@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './Header.css'; // Optional: for styling
+import './Header.css';
 
 const Header: React.FC = () => {
   return (
@@ -10,12 +10,8 @@ const Header: React.FC = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/todos">Todos</Link>
-          </li>
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
+          {/* // TODO: Link to todos page  */}
+          {/* // TODO: Link to profile page */}
         </ul>
       </nav>
     </header>

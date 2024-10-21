@@ -1,7 +1,5 @@
 import React from 'react';
 
-import TodoList from './components/todoList/TodoList';
-import Profile from './components/profile/Profile';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
@@ -12,8 +10,8 @@ const App: React.FC = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/todos" element={<TodoList />} />
-        <Route path="/profile" element={<Profile />} />
+        {/* // TODO: Add routes for todos and profile */}
+        {/* // TODO: Routes must be "/todos" and "/profile" */}
       </Routes>
     </BrowserRouter>
   );
