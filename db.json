@@ -9,8 +9,18 @@
   "todos": [
     {
       "title": "Run",
-      "completed": false,
+      "completed": true,
       "id": "1729490454291"
+    },
+    {
+      "id": "1729491337153",
+      "title": "Eat breakfast",
+      "completed": false
+    },
+    {
+      "id": "1729491342686",
+      "title": "Drink coffee",
+      "completed": false
     }
   ]
 }
