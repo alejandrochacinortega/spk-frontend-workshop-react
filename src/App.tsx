@@ -5,6 +5,7 @@ import Profile from './components/profile/Profile';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/header/Header';
 import Home from './components/home/Home';
+import { TodoItem } from './components/todo-item/TodoItem';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/todos" element={<TodoList />} />
+        <Route path="/todos/:id" element={<TodoItem />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>

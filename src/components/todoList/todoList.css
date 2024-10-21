@@ -1,69 +1,76 @@
+.todo-container {
+  /* width: 400px; */
+  /* border: 2px solid #fff; */
+  border-radius: 2px;
+  padding: 10px;
+}
 
+.todo-input-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
 
-  .todo-container {
+.todo-input {
+  width: calc(100% - 70px);
+  padding: 10px;
+  border-radius: 4px;
+  background-color: white;
+  border: 0;
+  color: black;
+}
 
-    /* width: 400px; */
-    /* border: 2px solid #fff; */
-    border-radius: 2px;
-    padding: 10px;
-  }
+.todo-button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  /* background-color: #4682b4; */
+  color: white;
+}
 
-  .todo-input-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-  }
+.todo-button:hover {
+  background-color: #1e90ff;
+}
 
-  .todo-input {
-    width: calc(100% - 70px);
-    padding: 10px;
-    border-radius: 4px;
-    background-color: white;
-    border: 0;
-    color: black
-  }
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+}
 
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #fff;
+}
 
-  .todo-button {
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    /* background-color: #4682b4; */
-    color: white;
-  }
+.delete-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: white;
+  background-color: #fff;
+  color: black;
+  border-radius: 4px;
+  padding: 5px;
+  margin-right: 5px;
+}
 
-  .todo-button:hover {
-    background-color: #1e90ff;
-  }
+.details-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: white;
+  background-color: blue;
+  color: #fff;
+  border-radius: 4px;
+  padding: 5px;
+  margin-right: 5px;
+}
 
-  .todo-list {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  .todo-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 2px solid #fff;
-
-  }
-
-  .delete-button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: white;
-    background-color: #fff;
-    color: black;
-    border-radius: 4px;
-    padding: 5px;
-    margin-right: 5px;
-  }
-
-  .delete-button:hover {
-    background-color: #455a64;
-  }
+.delete-button:hover {
+  background-color: #455a64;
+}

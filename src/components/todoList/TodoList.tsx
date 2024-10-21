@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './todoList.css';
 import { addTodo, deleteTodo, editTodo } from '../../api/todo';
-import { delay } from '../../utils/utils';
+// import { delay } from '../../utils/utils';
 import Loading from '../loading/Loading';
+import { Link } from 'react-router-dom';
 
 export type Todo = {
   id: number;
@@ -19,7 +20,7 @@ const TodoList: React.FC = () => {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        await delay();
+        // await delay();
         const response = await fetch('http://localhost:3000/todos');
         const data: Todo[] = await response.json();
         console.log('data ', data);
@@ -99,7 +100,7 @@ const TodoList: React.FC = () => {
     return todos
       .filter((todo) => todo.completed === false)
       .map((todo) => (
-        <li key={todo.id} className="todo-item">
+        <div key={todo.id} className="todo-item">
           <span>{todo.title}</span>
           <div>
             <button
@@ -120,8 +121,11 @@ const TodoList: React.FC = () => {
             >
               <span>Delete</span>
             </button>
+            <Link className="details-button" to={`/todos/${todo.id}`}>
+              Details
+            </Link>
           </div>
-        </li>
+        </div>
       ));
   };
 
@@ -129,7 +133,7 @@ const TodoList: React.FC = () => {
     return todos
       .filter((todo) => todo.completed === true)
       .map((todo) => (
-        <li key={todo.id} className="todo-item">
+        <div key={todo.id} className="todo-item">
           <span>{todo.title}</span>
           <div>
             <button
@@ -150,8 +154,11 @@ const TodoList: React.FC = () => {
             >
               <span>Delete</span>
             </button>
+            <Link className="details-button" to={`/todos/${todo.id}`}>
+              Details
+            </Link>
           </div>
-        </li>
+        </div>
       ));
   };
 
