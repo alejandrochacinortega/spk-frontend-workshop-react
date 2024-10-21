@@ -6,6 +6,8 @@
 
 ### ⛔️ DO NOT write your code in this file. This is just a read me file.
 
+### 👀 See result-1.png and result-2.png
+
 - **TODO 1:** create a TodoItem component
 
 - **TODO 2:** Get the id from the URL by using `useParams` from React Router in your component.
