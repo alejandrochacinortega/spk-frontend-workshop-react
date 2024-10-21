@@ -1,16 +1,21 @@
 import React from 'react';
-import Welcome from './components/welcome/Welcome';
 
 import TodoList from './components/todoList/TodoList';
 import Profile from './components/profile/Profile';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Header from './components/header/Header';
+import Home from './components/home/Home';
 
 const App: React.FC = () => {
   return (
-    <div>
-      <Welcome demo="6 - CRUD Todo List with database" />
-      <Profile />
-      <TodoList />
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/todos" element={<TodoList />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

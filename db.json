@@ -6,5 +6,11 @@
     "email": "alejandro.chacin.ortega@spk.no",
     "phone": "+47 123 45 678"
   },
-  "todos": []
+  "todos": [
+    {
+      "title": "Run",
+      "completed": false,
+      "id": "1729490454291"
+    }
+  ]
 }
